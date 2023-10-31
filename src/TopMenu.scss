@@ -1,0 +1,24 @@
+.burger-icon {
+color: rgb(14, 86, 8);
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
+   
+
+}
+
+.topmenu {
+    margin-left: auto;
+
+    a {
+        color: rgb(16, 135, 65);
+        margin-left: 1em;
+
+        &.link--highlighted {
+            color: rgb(47, 228, 119);
+        }
+    }
+}

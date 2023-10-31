@@ -1,0 +1,27 @@
+$main_color: rgb(17, 77, 57);
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+   list-style-type: none;
+  
+}
+
+.app {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ 
+}
+  
+.app__headline {
+           font-weight: 600;
+            color: $main_color;
+}
+.app__motto {
+    color: rgb(96, 142, 127);
+      
+}
+    
+
+
