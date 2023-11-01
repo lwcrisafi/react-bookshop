@@ -4,6 +4,7 @@ import './Header.scss';
 import SearchBox from "./SearchBox";
 import Topmenu from "./Topmenu";
 import context from "./Context";
+import { Route, Routes } from "react-router-dom";
 
 function Header({currentPage, setCurrentPage}) {
 
@@ -25,7 +26,14 @@ function Header({currentPage, setCurrentPage}) {
       <header className="header">
         <div className="header__sitename">Philistine Bookshop</div>
 
-        <SearchBox value={value} setValue={setValue} />
+<Routes>
+                <Route path="/about-us" element={ <SearchBox value={ value } setValue={ setValue } /> } />
+                <Route path="*" element="" />
+            </Routes>
+
+        <CurrencySelection />
+
+        {/* <SearchBox value={value} setValue={setValue} /> */}
 
         <Topmenu
           currentPage={currentPage}

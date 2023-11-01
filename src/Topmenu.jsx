@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./TopMenu.scss";
+import { Link, useLocation } from "react-router-dom";
 
 function Topmenu({ currentPage, setCurrentPage, currentItem }) 
 {
@@ -12,6 +13,8 @@ function Topmenu({ currentPage, setCurrentPage, currentItem })
   const handleItemClick = (page) => {
     setCurrentPage(page);
   }
+  const location = useLocation();
+  console.log(location);
 
   const onClickLogin = () => {
     
@@ -19,39 +22,44 @@ function Topmenu({ currentPage, setCurrentPage, currentItem })
 
   return (
     <>
+      {/* <nav className="topmenu">
+        <Link>
+          className={`link` + (currentPage === "" ? " link --highlighted" : "")}
+          href="#" onClick={() => handleItemClick("")}
+        </Link> */}
+      {/* </nav> */}
       {open ? (
-        <nav className="topmenu">
-          <a
-            className={
-              `link` + (currentPage === "" ? " link --highlighted" : "")
-            }
-            href="#"
-            onClick={() => handleItemClick("")}
-          >
-            Home
-          </a>
-          <a
-            className={
-              `link` + (currentPage === "about" ? " link --highlighted" : "")
-            }
-            href="#about"
-            onClick={() => handleItemClick("about")}
-          >
-            About us
-          </a>
-          <a
-            className={
-              `link` + (currentPage === "contact" ? " link --highlighted" : "")
-            }
-            href="#contact"
-            onClick={() => handleItemClick("contact")}
-          >
-            Contact
-          </a>
-        </nav>
-      ) : (
-        ""
-      )}
+      <nav className="topmenu">
+        <Link
+          className={
+            `link` + (location.pathname === "/" ? " link--highlighted" : "")
+          }
+          to="/"
+        >
+          Home
+        </Link>
+
+        <Link
+          className={
+            `link` + (location === "/about-us" ? " link--highlighted" : "")
+          }
+          to="/about-us"
+        >
+          About us
+        </Link>
+
+        <Link
+          className={
+            `link` + (location === "/contact-us" ? " link--highlighted" : "")
+          }
+          to="/contact-us"
+        >
+          Contact
+        </Link>
+
+        <Link to="/books">Books</Link>
+      </nav>
+      ) : '' }
       <div className="burger-icon" onClick={toggleMenu}>
         ☰
       </div>
@@ -61,7 +69,6 @@ function Topmenu({ currentPage, setCurrentPage, currentItem })
             Login
           </a>
         </li>
-    
       </ul>
     </>
   );

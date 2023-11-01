@@ -7,6 +7,7 @@ import context from "./Context";
 import reducer from "./reducer";
 import Homepage from "./Homepage";
 import CurrencySelection from "./CurrencySelection";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("");
@@ -23,24 +24,26 @@ function App() {
   });
 
   return (
-    <context.Provider
-      value={{ state: contextValue, dispatch: setContextValue }}
-    >
-      <CurrencyContext.Provider value={{ currency, setCurrency }}>
-        <div className="app">
-          <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
-          <MainContent
-            currentPage={currentPage}
-            user={user}
-            setUser={setUser}
-          />
+    <BrowserRouter>
+      <context.Provider
+        value={{ state: contextValue, dispatch: setContextValue }}
+      >
+        <CurrencyContext.Provider value={{ currency, setCurrency }}>
+          <div className="app">
+            <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            <MainContent
+              currentPage={currentPage}
+              user={user}
+              setUser={setUser}
+            />
+          </div>
+        </CurrencyContext.Provider>
+        <div>
+          <CurrencySelection />
         </div>
-      </CurrencyContext.Provider>
-      <div>
-        <CurrencySelection />
-      </div>
-      <Homepage />
-    </context.Provider>
+        <Homepage />
+      </context.Provider>
+    </BrowserRouter>
   );
 }
 

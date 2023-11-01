@@ -6,7 +6,7 @@ export default function Homepage() {
     return (
         <div>
             <h1>Welcome to the Philistine Bookshop</h1>
-            <p>Discover a world of Books!</p>
+            <p>Where everyone is welcome!</p>
 
             <BookList />
 

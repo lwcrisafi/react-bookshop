@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import './MainContent.scss'
-import LoginForm from "./LoginForm";
 import CurrencyContext from "./CurrencyContext";
-import CurrencySelection from "./CurrencySelection";
 import Homepage from "./Homepage";
-import BookList from "./Booklist";
+import { Routes, Route } from "react-router-dom";
+import AboutUs from "./AboutUs";
+import Contact from "./Contact";
+import BookDetail from "./BookDetail";
+import SubpageLayout from "./SubpageLayout";
 
 
 function MainContent({ currentPage }) {
@@ -15,13 +17,36 @@ const { currency } = useContext(CurrencyContext);
     <>
       <main className="main">
         <h1 className="app__headline">Philistine Bookshop</h1>
-        <p className="app__motto">Where the rest of us go...</p>
+
+        <Routes>
+                <Route path="/" element={ <Homepage /> } />
+
+                <Route path="/" element={ <SubpageLayout /> }>
+                    <Route path="/about-us" element={ <AboutUs /> } />
+                    <Route path="/contact-us" element={ <Contact /> } />
+                    <Route path="/book/:id" element={ <BookDetail /> } />
+                    <Route path="*" element="404: page not found" />
+                </Route>
+            </Routes>
+
+        {/* previously working below, replaced with React Router above */}
+
+        {/* <p className="app__motto">Where the rest of us go...</p>
         {currentPage === "" ? <h2>Welcome to the Homepage</h2> : ""}
         {currentPage === "about" ? <h2>All About Us</h2> : ""}
 
-        {currentPage === "contact" ? <h2>Contact Us</h2> : ""}
+        {currentPage === "contact" ? <h2>Contact Us</h2> : ""} */}
       </main>
-      {/* <div>
+    </>
+  );
+};
+
+export default MainContent;
+
+
+
+
+  /* <div>
         <Homepage />
       </div>
       <div>
@@ -39,9 +64,4 @@ const { currency } = useContext(CurrencyContext);
         ) : (
           <LoginForm setUser={setUser} />
         )}
-      </div> */}
-    </>
-  );
-};
-
-export default MainContent;
+      </div> */
